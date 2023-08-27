@@ -59,6 +59,9 @@
     </style>
 </head>
 <body>
+
+    <div id="message-box"></div>
+
     <h1>Login</h1>
     <form class="auth-form" id="login-form">
         <label for="login-username">Username:</label>
@@ -91,10 +94,11 @@
             };
 
             ws.onmessage = (event) => {
-                const message = JSON.parse(event.data);
-                // Handle login/signup responses
-                console.log("Received message:", message);
-            };
+               const message = JSON.parse(event.data);
+        if (messageBox) {
+            messageBox.innerHTML = message.message;
+        }
+        console.log("Received message:", message);};
 
             ws.onclose = () => {
                 console.log("WebSocket connection closed");
