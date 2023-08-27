@@ -60,7 +60,7 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form class="auth-form">
+    <form class="auth-form" id="login-form">
         <label for="login-username">Username:</label>
         <input type="text" id="login-username" name="login-username" required>
         <label for="login-password">Password:</label>
@@ -69,12 +69,64 @@
     </form>
 
     <h1>Signup</h1>
-    <form class="auth-form">
+    <form class="auth-form" id="signup-form">
         <label for="signup-username">Username:</label>
         <input type="text" id="signup-username" name="signup-username" required>
         <label for="signup-password">Password:</label>
         <input type="password" id="signup-password" name="signup-password" required>
         <button type="submit">Signup</button>
     </form>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginForm = document.getElementById("login-form");
+            const signupForm = document.getElementById("signup-form");
+            
+            // WebSocket connection to your server
+            const ws = new WebSocket("wss://aiscribe.onrender.com");
+
+            ws.onopen = () => {
+                console.log("WebSocket connection established");
+            };
+
+            ws.onmessage = (event) => {
+                const message = JSON.parse(event.data);
+                // Handle login/signup responses
+                console.log("Received message:", message);
+            };
+
+            ws.onclose = () => {
+                console.log("WebSocket connection closed");
+            };
+
+            // Handle login form submission
+            loginForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                // Construct login request message
+                const loginData = {
+                    type: "login",
+                    username: loginUsernameInput.value,
+                    password: loginPasswordInput.value,
+                };
+                // Send login request
+                ws.send(JSON.stringify(loginData));
+            });
+
+            // Handle signup form submission
+            signupForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                // Construct signup request message
+                const signupData = {
+                    type: "signup",
+                    username: signupUsernameInput.value,
+                    password: signupPasswordInput.value,
+                };
+                // Send signup request
+                ws.send(JSON.stringify(signupData));
+            });
+        });
+    </script>
+    
 </body>
 </html>
