@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login and Signup</title>
-    <style>
+       <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -80,12 +80,12 @@
         <button type="submit">Signup</button>
     </form>
 
-
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const loginForm = document.getElementById("#login-form");
-            const signupForm = document.getElementById("#signup-form");
-            
+            const loginForm = document.getElementById("login-form");
+            const signupForm = document.getElementById("signup-form");
+            const messageBox = document.getElementById("message-box");
+
             // WebSocket connection to your server
             const ws = new WebSocket("wss://aiscribe.onrender.com");
 
@@ -94,11 +94,12 @@
             };
 
             ws.onmessage = (event) => {
-               const message = JSON.parse(event.data);
-        if (messageBox) {
-            messageBox.innerHTML = message.message;
-        }
-        console.log("Received message:", message);};
+                const message = JSON.parse(event.data);
+                if (messageBox) {
+                    messageBox.innerHTML = message.message;
+                }
+                console.log("Received message:", message);
+            };
 
             ws.onclose = () => {
                 console.log("WebSocket connection closed");
@@ -110,8 +111,8 @@
                 // Construct login request message
                 const loginData = {
                     type: "login",
-                    username: login-username.value,
-                    password: login-password.value,
+                    username: login_username.value,
+                    password: login_password.value,
                 };
                 // Send login request
                 ws.send(JSON.stringify(loginData));
@@ -123,8 +124,8 @@
                 // Construct signup request message
                 const signupData = {
                     type: "signup",
-                    username: signup-username.value,
-                    password: signup-passwordInput.value,
+                    username: signup_username.value,
+                    password: signup_password.value,
                 };
                 // Send signup request
                 ws.send(JSON.stringify(signupData));
