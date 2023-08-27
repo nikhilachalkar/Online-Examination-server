@@ -30,12 +30,12 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files from the root directory of the GitHub repository
-app.use(express.static(path.join(__dirname, '..')));
+// Serve static files from the root of the GitHub repository
+app.use(express.static(__dirname));
 
 // Handle the root URL
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'login.html'));
+    res.sendFile(path.join(__dirname, 'login.html'));
 });
 
 // Start the server
