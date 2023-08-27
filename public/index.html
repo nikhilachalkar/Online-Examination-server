@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Upload a File</h1>
+    <form id="upload-form">
+        <label for="file">Choose a PDF file:</label>
+        <input type="file" id="file" name="file" accept=".pdf">
+        <button type="submit">Upload</button>
+    </form>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("upload-form");
+            const ws = new WebSocket("ws://aiscribe.onrender.com"); // Replace with your server's WebSocket URL
+
+            ws.onopen = () => {
+                console.log("WebSocket connection established");
+            };
+
+            ws.onmessage = (event) => {
+                const message = JSON.parse(event.data);
+                console.log("Received message:", message);
+            };
+
+            ws.onclose = () => {
+                console.log("WebSocket connection closed");
+            };
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const fileInput = document.getElementById("file");
+                const file = fileInput.files[0];
+
+                if (file) {
+                    const formData = new FormData();
+                    formData.append("file", file);
+
+                    try {
+                        ws.send(JSON.stringify({ type: "upload", filename: file.name }));
+
+                        // You can also send the file content here using formData and FileReader
+
+                        console.log("File upload initiated");
+                    } catch (error) {
+                        console.error("Error sending file:", error);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
