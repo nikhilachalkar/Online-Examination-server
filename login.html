@@ -93,13 +93,25 @@
                 console.log("WebSocket connection established");
             };
 
-            ws.onmessage = (event) => {
+           /* ws.onmessage = (event) => {
                 const message = JSON.parse(event.data);
                 if (messageBox) {
                     messageBox.innerHTML = message.message;
                 }
                 console.log("Received message:", message);
-            };
+            };*/
+ws.onmessage = (event) => {
+    const message = JSON.parse(event.data);
+    if (messageBox) {
+        messageBox.innerHTML = message.message;
+    }
+    console.log("Received message:", message);
+
+    if (message.success) {
+        // Redirect to index.html on success
+        window.location.href = "index.html";
+    }
+};
 
             ws.onclose = () => {
                 console.log("WebSocket connection closed");
