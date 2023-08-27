@@ -110,8 +110,8 @@
                 // Construct login request message
                 const loginData = {
                     type: "login",
-                    username: loginUsernameInput.value,
-                    password: loginPasswordInput.value,
+                    username: login-username.value,
+                    password: login-password.value,
                 };
                 // Send login request
                 ws.send(JSON.stringify(loginData));
@@ -123,8 +123,8 @@
                 // Construct signup request message
                 const signupData = {
                     type: "signup",
-                    username: signupUsernameInput.value,
-                    password: signupPasswordInput.value,
+                    username: signup-username.value,
+                    password: signup-passwordInput.value,
                 };
                 // Send signup request
                 ws.send(JSON.stringify(signupData));
