@@ -5,56 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #3d2ede;
-        }
-
-        h1 {
-            text-align: center;
-            color: aliceblue;
-            font-size:large;
-            margin: 20px 0;
-        }
-
-        #upload-form {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #e6e7ee;
-            border-radius: 5px;
-            padding: 20px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        input[type="file"] {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        button[type="submit"] {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
+        /* Your CSS styles here */
     </style>
 </head>
 <body>
@@ -67,7 +18,43 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // JavaScript code remains unchanged
+            const form = document.getElementById("upload-form");
+            const ws = new WebSocket("ws://aiscribe.onrender.com"); // Replace with your server's WebSocket URL
+
+            ws.onopen = () => {
+                console.log("WebSocket connection established");
+            };
+
+            ws.onmessage = (event) => {
+                const message = JSON.parse(event.data);
+                console.log("Received message:", message);
+            };
+
+            ws.onclose = () => {
+                console.log("WebSocket connection closed");
+            };
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const fileInput = document.getElementById("file");
+                const file = fileInput.files[0];
+
+                if (file) {
+                    const formData = new FormData();
+                    formData.append("file", file);
+
+                    try {
+                        ws.send(JSON.stringify({ type: "upload", filename: file.name }));
+
+                        // You can also send the file content here using formData and FileReader
+
+                        console.log("File upload initiated");
+                    } catch (error) {
+                        console.error("Error sending file:", error);
+                    }
+                }
+            });
         });
     </script>
 </body>
