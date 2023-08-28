@@ -109,9 +109,8 @@ ws.onmessage = (event) => {
 
     if (message.success) {
         // Redirect to index.html on success
-       // window.location.href = 'index.html';
-         window.location.href = `index.html?username=${message.username}`;
-
+        window.location.href = 'index.html';
+       
     }
 };
 
