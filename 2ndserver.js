@@ -14,7 +14,21 @@ const server = http.createServer((req, res) => {
                 res.end(data);
             }
         });
-    } else {
+    } 
+    else if (req.url==='/index.html')
+        {
+             fs.readFile('login.html', 'utf8', (err, data) => {
+            if (err) {
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Internal Server Error');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        });
+        }
+        
+        else {
         // Handle other requests
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Not Found');
