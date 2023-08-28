@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
             }
         });
     } 
-    else if (req.url==='/index.html?username=')
+    else if (req.url==='/index.html?username=?')
         {
              fs.readFile('index.html', 'utf8', (err, data) => {
             if (err) {
