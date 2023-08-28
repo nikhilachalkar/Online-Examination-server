@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
     } 
     else if (req.url==='/index.html')
         {
-             fs.readFile('login.html', 'utf8', (err, data) => {
+             fs.readFile('index.html', 'utf8', (err, data) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
                 res.end('Internal Server Error');
