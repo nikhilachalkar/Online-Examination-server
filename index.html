@@ -61,18 +61,19 @@
 <body>
     <h1>Upload a File</h1>
     <form id="upload-form">
-        <label for="file">Choose a PDF file:</label>
-        <input type="file" id="file" name="file" accept=".pdf">
-        <button type="submit">Upload</button>
+        <label for="file">Choose a file (PDF or TXT):</label>
+<input type="file" id="file" name="file" accept=".pdf, .txt">
+<button type="submit">Upload</button>
+         <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
     </form>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const form = document.getElementById("upload-form");
             const ws = new WebSocket("wss://aiscribe.onrender.com"); // Replace with your server's WebSocket URL
-             const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const username = urlParams.get('username');
+            
 
             ws.onopen = () => {
                 console.log("WebSocket connection established");
@@ -89,6 +90,8 @@
 
             form.addEventListener("submit", async (e) => {
                 e.preventDefault();
+
+                const username=document.getElementById("username");
 
  const fileInput = document.getElementById("file");
     const file = fileInput.files[0];
