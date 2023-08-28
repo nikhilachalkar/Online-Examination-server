@@ -69,7 +69,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const form = document.getElementById("upload-form");
-            const ws = new WebSocket("ws://aiscribe.onrender.com"); // Replace with your server's WebSocket URL
+            const ws = new WebSocket("wss://aiscribe.onrender.com"); // Replace with your server's WebSocket URL
 
             ws.onopen = () => {
                 console.log("WebSocket connection established");
