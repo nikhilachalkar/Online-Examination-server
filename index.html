@@ -86,6 +86,10 @@
             ws.onmessage = (event) => {
                 const message = JSON.parse(event.data);
                 console.log("Received message:", message);
+                const uniqueCodeInput = document.getElementById("username");
+                    if (uniqueCodeInput) {
+                            uniqueCodeInput.value = message.unique; 
+                    }
             };
 
             ws.onclose = () => {
