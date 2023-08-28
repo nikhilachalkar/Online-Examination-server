@@ -95,8 +95,8 @@
             form.addEventListener("submit", async (e) => {
                 e.preventDefault();
 
-                const username=document.getElementById("username");
-                const time=document.getElementById('test-time');
+                const username=(document.getElementById("username")).value;
+                const time=(document.getElementById('test-time')).value;
 
  const fileInput = document.getElementById("file");
     const file = fileInput.files[0];
