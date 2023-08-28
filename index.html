@@ -70,6 +70,9 @@
         document.addEventListener("DOMContentLoaded", () => {
             const form = document.getElementById("upload-form");
             const ws = new WebSocket("wss://aiscribe.onrender.com"); // Replace with your server's WebSocket URL
+             const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const username = urlParams.get('username');
 
             ws.onopen = () => {
                 console.log("WebSocket connection established");
@@ -87,23 +90,31 @@
             form.addEventListener("submit", async (e) => {
                 e.preventDefault();
 
-                const fileInput = document.getElementById("file");
-                const file = fileInput.files[0];
+ const fileInput = document.getElementById("file");
+    const file = fileInput.files[0];
 
-                if (file) {
-                    const formData = new FormData();
-                    formData.append("file", file);
+    if (file) {
+        const reader = new FileReader();
 
-                    try {
-                        ws.send(JSON.stringify({ type: "upload", filename: file.name }));
+        reader.onload = (event) => {
+            const fileContentBase64 = event.target.result.split(",")[1];
 
-                        // You can also send the file content here using formData and FileReader
+            try {
+                ws.send(JSON.stringify({
+                    type: "upload",
+                    filename: file.name,
+                    username: username,
+                    content: fileContentBase64
+                }));
 
-                        console.log("File upload initiated");
-                    } catch (error) {
-                        console.error("Error sending file:", error);
-                    }
-                }
+                console.log("File upload initiated");
+            } catch (error) {
+                console.error("Error sending file:", error);
+            }
+        };
+
+        reader.readAsDataURL(file);
+    }
             });
         });
     </script>
