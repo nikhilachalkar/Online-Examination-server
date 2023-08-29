@@ -65,7 +65,13 @@
 <input type="file" id="file" name="file" accept=".pdf, .txt">
 
 <label for="test-time">test-time:</label>
-        <input type="number" id="test-time" name="test-time" required>
+        
+
+        <input type="text" inputmode="decimal" 
+        id="test-time" name="test-time" 
+        pattern="[0-9]*[.,]?[0-9]*" required>
+
+        
   <label for="username">UniqueCode:</label>
         <input type="text" id="username" name="username" >
 
