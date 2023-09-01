@@ -63,7 +63,7 @@
     <div id="message-box"></div>
 
     <h1>Login</h1>
-    <form class="auth-form" id="login-form">
+    <form class="auth-form" id="login-form" action="/login" method="POST">
         <label for="login-username">Username:</label>
         <input type="text" id="login-username" name="login-username" required>
         <label for="login-password">Password:</label>
@@ -81,69 +81,69 @@
     </form>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const loginForm = document.getElementById("login-form");
-            const signupForm = document.getElementById("signup-form");
-            const messageBox = document.getElementById("message-box");
+//         document.addEventListener("DOMContentLoaded", () => {
+//             const loginForm = document.getElementById("login-form");
+//             const signupForm = document.getElementById("signup-form");
+//             const messageBox = document.getElementById("message-box");
 
-            // WebSocket connection to your server
-            const ws = new WebSocket("wss://aiscribe.onrender.com");
+//             // WebSocket connection to your server
+//             const ws = new WebSocket("wss://aiscribe.onrender.com");
 
-            ws.onopen = () => {
-                console.log("WebSocket connection established");
-            };
+//             ws.onopen = () => {
+//                 console.log("WebSocket connection established");
+//             };
 
-           /* ws.onmessage = (event) => {
-                const message = JSON.parse(event.data);
-                if (messageBox) {
-                    messageBox.innerHTML = message.message;
-                }
-                console.log("Received message:", message);
-            };*/
-ws.onmessage = (event) => {
-    const message = JSON.parse(event.data);
-    if (messageBox) {
-        messageBox.innerHTML = message.message;
-    }
-    console.log("Received message:", message);
+//            /* ws.onmessage = (event) => {
+//                 const message = JSON.parse(event.data);
+//                 if (messageBox) {
+//                     messageBox.innerHTML = message.message;
+//                 }
+//                 console.log("Received message:", message);
+//             };*/
+// ws.onmessage = (event) => {
+//     const message = JSON.parse(event.data);
+//     if (messageBox) {
+//         messageBox.innerHTML = message.message;
+//     }
+//     console.log("Received message:", message);
 
-    if (message.success) {
-        // Redirect to index.html on success
-        window.location.href = 'index.html';
+//     if (message.success) {
+//         // Redirect to index.html on success
+//         window.location.href = 'index.html';
        
-    }
-};
+//     }
+// };
 
-            ws.onclose = () => {
-                console.log("WebSocket connection closed");
-            };
+//             ws.onclose = () => {
+//                 console.log("WebSocket connection closed");
+//             };
 
-            // Handle login form submission
-            loginForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                // Construct login request message
-                const loginData = {
-                    type: "login",
-                    username: document.getElementById('login-username').value,
-                    password: document.getElementById('login-password').value,
-                };
-                // Send login request
-                ws.send(JSON.stringify(loginData));
-            });
+//             // Handle login form submission
+//             loginForm.addEventListener("submit", (e) => {
+//                 e.preventDefault();
+//                 // Construct login request message
+//                 const loginData = {
+//                     type: "login",
+//                     username: document.getElementById('login-username').value,
+//                     password: document.getElementById('login-password').value,
+//                 };
+//                 // Send login request
+//                 ws.send(JSON.stringify(loginData));
+//             });
 
-            // Handle signup form submission
-            signupForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                // Construct signup request message
-                const signupData = {
-                    type: "signup",
-                    username: document.getElementById('signup-username').value,
-                    password: document.getElementById('signup-password').value,
-                };
-                // Send signup request
-                ws.send(JSON.stringify(signupData));
-            });
-        });
+//             // Handle signup form submission
+//             signupForm.addEventListener("submit", (e) => {
+//                 e.preventDefault();
+//                 // Construct signup request message
+//                 const signupData = {
+//                     type: "signup",
+//                     username: document.getElementById('signup-username').value,
+//                     password: document.getElementById('signup-password').value,
+//                 };
+//                 // Send signup request
+//                 ws.send(JSON.stringify(signupData));
+//             });
+//         });
     </script>
     
 </body>
