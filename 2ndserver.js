@@ -1,12 +1,12 @@
 const http = require('http');
 const fs = require('fs');
 const PORT = process.env.PORT || 3000;
+const WebSocket = require('ws');
 
 
-  // WebSocket connection to your server
-            const ws = new WebSocket("wss://aiscribe.onrender.com");
 
-            ws.onopen = () => {
+const ws = new WebSocket("wss://aiscribe.onrender.com");
+ws.onopen = () => {
                 console.log("WebSocket connection established");
             };
 
