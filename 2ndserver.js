@@ -30,7 +30,7 @@ ws.onclose = () => {
 
 
 const server = http.createServer((req, res) => {
-    if (req.url === '/login') {
+    if (req.url === '/') {
         // Serve the HTML file
         fs.readFile('login.html', 'utf8', (err, data) => {
             if (err) {
@@ -42,19 +42,19 @@ const server = http.createServer((req, res) => {
             }
         });
     } 
-    else if (req.url==='/index.html')
-        {
-             fs.readFile('index.html', 'utf8', (err, data) => {
-            if (err) {
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end('Internal Server Error');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-        }
-         else if (req.url === '/login' && req.method === 'POST') {
+    // else if (req.url==='/index.html')
+    //     {
+    //          fs.readFile('index.html', 'utf8', (err, data) => {
+    //         if (err) {
+    //             res.writeHead(500, { 'Content-Type': 'text/plain' });
+    //             res.end('Internal Server Error');
+    //         } else {
+    //             res.writeHead(200, { 'Content-Type': 'text/html' });
+    //             res.end(data);
+    //         }
+    //     });
+    //     }
+         else if (req.url === '/' && req.method === 'POST') {
         // Handle login form submission
         let body = '';
         req.on('data', (chunk) => {
