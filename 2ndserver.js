@@ -16,7 +16,6 @@ ws.onmessage = (event) => {
     console.log("Received message:", message);
   if (message.success) {
         log=true;
-        window.location.href = 'index.html';
        
     }
 };
@@ -54,7 +53,7 @@ const server = http.createServer((req, res) => {
     //         }
     //     });
     //     }
-         else if (req.url === '/' && req.method === 'POST') {
+         else if (req.url === '/index.html' && req.method === 'POST') {
         // Handle login form submission
         let body = '';
         req.on('data', (chunk) => {
