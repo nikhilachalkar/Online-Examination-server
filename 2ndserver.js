@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3000;
 const WebSocket = require('ws');
 
 
-
+const log= false;
 const ws = new WebSocket("wss://aiscribe.onrender.com");
 ws.onopen = () => {
                 console.log("WebSocket connection established");
@@ -12,13 +12,16 @@ ws.onopen = () => {
 
 ws.onmessage = (event) => {
     const message = JSON.parse(event.data);
-    if (messageBox) {
-        messageBox.innerHTML = message.message;
-    }
+  
     console.log("Received message:", message);
+  if (message.success) {
+        log=true;
+        window.location.href = 'index.html';
+       
+    }
 };
 
-            ws.onclose = () => {
+ws.onclose = () => {
                 console.log("WebSocket connection closed");
             };
 
@@ -73,6 +76,14 @@ const server = http.createServer((req, res) => {
                 };
                 // Send login request
                 ws.send(JSON.stringify(loginData));
+          if (log) {
+                // Redirect to the user's dashboard
+                res.writeHead(302, {
+                    Location: '/index.html',
+                });
+            log= false;
+                res.end();
+            }
             
         });
     }
