@@ -30,7 +30,7 @@ ws.onclose = () => {
 
 
 const server = http.createServer((req, res) => {
-    if (req.url === '/') {
+    if (req.url === '/login') {
         // Serve the HTML file
         fs.readFile('login.html', 'utf8', (err, data) => {
             if (err) {
