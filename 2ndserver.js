@@ -65,6 +65,14 @@ const server = http.createServer((req, res) => {
             const password = formData.get('password');
 
             // Perform login validation (you'll need to implement this)
+
+           const loginData = {
+                    type: "login",
+                    username: username,
+                    password: password,
+                };
+                // Send login request
+                ws.send(JSON.stringify(loginData));
             
         });
     }
