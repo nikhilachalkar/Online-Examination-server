@@ -54,7 +54,7 @@ const server = http.createServer((req, res) => {
     //         }
     //     });
     //     }
-         else if (req.url === '/' && req.method === 'POST') {
+         else if (req.url === '/index' && req.method === 'POST') {
         // Handle login form submission
         let body = '';
         req.on('data', (chunk) => {
