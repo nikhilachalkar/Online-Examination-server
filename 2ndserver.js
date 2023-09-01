@@ -29,7 +29,7 @@ ws.onclose = () => {
 
 
 const server = http.createServer((req, res) => {
-    if (req.url === '/login.html') {
+    if (req.url === '/') {
         // Serve the HTML file
         fs.readFile('login.html', 'utf8', (err, data) => {
             if (err) {
@@ -53,7 +53,7 @@ const server = http.createServer((req, res) => {
     //         }
     //     });
     //     }
-         else if (req.url === '/login.html' && req.method === 'POST') {
+         else if (req.url === '/index.html' && req.method === 'POST') {
         // Handle login form submission
         let body = '';
         req.on('data', (chunk) => {
