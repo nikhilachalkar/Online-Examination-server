@@ -65,7 +65,9 @@ const server = http.createServer((req, res) => {
             const formData = new URLSearchParams(body);
             const username = formData.get('username');
             const password = formData.get('password');
-
+console.log("Received username:", username);
+    console.log("Received password:", password);
+          
             // Perform login validation (you'll need to implement this)
 
            const loginData = {
