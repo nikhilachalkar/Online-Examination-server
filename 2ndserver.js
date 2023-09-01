@@ -27,7 +27,23 @@ const server = http.createServer((req, res) => {
             }
         });
         }
-        
+         else if (req.url === '/login' && req.method === 'POST') {
+        // Handle login form submission
+        let body = '';
+        req.on('data', (chunk) => {
+            body += chunk.toString();
+        });
+
+        req.on('end', () => {
+            // Parse the POST data to get username and password
+            const formData = new URLSearchParams(body);
+            const username = formData.get('username');
+            const password = formData.get('password');
+
+            // Perform login validation (you'll need to implement this)
+            
+        });
+    }
         else {
         // Handle other requests
         res.writeHead(404, { 'Content-Type': 'text/plain' });
