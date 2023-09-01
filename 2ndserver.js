@@ -2,6 +2,30 @@ const http = require('http');
 const fs = require('fs');
 const PORT = process.env.PORT || 3000;
 
+
+  // WebSocket connection to your server
+            const ws = new WebSocket("wss://aiscribe.onrender.com");
+
+            ws.onopen = () => {
+                console.log("WebSocket connection established");
+            };
+
+ws.onmessage = (event) => {
+    const message = JSON.parse(event.data);
+    if (messageBox) {
+        messageBox.innerHTML = message.message;
+    }
+    console.log("Received message:", message);
+};
+
+            ws.onclose = () => {
+                console.log("WebSocket connection closed");
+            };
+
+
+
+
+
 const server = http.createServer((req, res) => {
     if (req.url === '/') {
         // Serve the HTML file
