@@ -79,20 +79,19 @@ console.log("Received username:", username);
                 ws.send(JSON.stringify(loginData));
 
 
-          console.log(mes);
-          if ( mes===1) {
-
-                // Redirect to the user's dashboard
-                res.writeHead(302, {
-                    Location: '/index.html',
-                });
-                res.end();
-            mes=0;
-          }
           
             
-        });
+            
+        );
     }
+           else if (req.url === '/index.html' && mes === 1) {
+        // Redirect to the user's dashboard if mes is 1
+        res.writeHead(302, {
+            Location: '/index.html',
+        });
+        res.end();
+        mes = 0;
+        }
         else {
         // Handle other requests
         res.writeHead(404, { 'Content-Type': 'text/plain' });
