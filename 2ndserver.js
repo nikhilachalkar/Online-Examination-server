@@ -80,7 +80,7 @@ console.log("Received username:", username);
 
 
           console.log(mes);
-          if (mes===1) {
+          if (typeof mes=='1') {
 
                 // Redirect to the user's dashboard
                 res.writeHead(302, {
