@@ -14,7 +14,7 @@ ws.onmessage = (event) => {
   
     console.log("Received message:", message);
   if (message.success) {
-        log=true;
+  
        
     }
 };
@@ -76,14 +76,21 @@ console.log("Received username:", username);
                 };
                 // Send login request
                 ws.send(JSON.stringify(loginData));
-          if (log) {
+
+
+          if (message.success) {
+
                 // Redirect to the user's dashboard
                 res.writeHead(302, {
                     Location: '/index.html',
                 });
-            log= false;
                 res.end();
-            }
+          }
+          else
+          {
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            res.end('Not Found');
+          }
             
         });
     }
