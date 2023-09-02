@@ -15,7 +15,7 @@ ws.onmessage = (event) => {
     console.log("Received message:", message);
  if(message.success)
  {
-  mes='1';
+  mes=1;
  }
 
 };
@@ -80,7 +80,7 @@ console.log("Received username:", username);
 
 
           console.log(mes);
-          if (typeof mes=='1') {
+          if (typeof mes==1) {
 
                 // Redirect to the user's dashboard
                 res.writeHead(302, {
