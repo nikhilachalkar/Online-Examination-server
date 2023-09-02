@@ -15,11 +15,7 @@ ws.onmessage = (event) => {
   
     console.log("Received message:", message);
  mes=message.success;
-  
-  if (message.success) {
-  
-       
-    }
+
 };
 
 ws.onclose = () => {
