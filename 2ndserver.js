@@ -15,7 +15,10 @@ ws.onmessage = (event) => {
     console.log("Received message:", message);
  if(message.success)
  {
-   mes=1;
+   res.writeHead(302, {
+                    Location: '/index.html',
+                });
+                res.end();
  }
 
 };
@@ -89,11 +92,7 @@ console.log("Received username:", username);
                 res.end();
             mes=0;
           }
-          else
-          {
-            res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('Not Found');
-          }
+          
             
         });
     }
