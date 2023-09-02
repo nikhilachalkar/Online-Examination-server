@@ -84,7 +84,7 @@ console.log("Received username:", username);
         }      
         );
     }
-           else if (req.url === '/index.html' && mes === 1) {
+           else if (req.url === '/login.html' && mes === 1) {
         // Redirect to the user's dashboard if mes is 1
         res.writeHead(302, {
             Location: '/index.html',
