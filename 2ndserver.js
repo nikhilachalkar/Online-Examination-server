@@ -3,7 +3,7 @@ const fs = require('fs');
 const PORT = process.env.PORT || 3000;
 const WebSocket = require('ws');
 
-var mes=0;
+let mes=0;
 const ws = new WebSocket("wss://aiscribe.onrender.com");
 ws.onopen = () => {
                 console.log("WebSocket connection established");
