@@ -77,6 +77,7 @@ console.log("Received username:", username);
                 ws.send(JSON.stringify(loginData));
 
 
+          console.log(mes);
           if (mes==='true') {
 
                 // Redirect to the user's dashboard
