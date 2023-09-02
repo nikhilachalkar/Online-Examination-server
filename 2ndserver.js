@@ -3,8 +3,7 @@ const fs = require('fs');
 const PORT = process.env.PORT || 3000;
 const WebSocket = require('ws');
 
-var mes;
-let log= false;
+var mes=0;
 const ws = new WebSocket("wss://aiscribe.onrender.com");
 ws.onopen = () => {
                 console.log("WebSocket connection established");
@@ -14,7 +13,10 @@ ws.onmessage = (event) => {
     const message = JSON.parse(event.data);
   
     console.log("Received message:", message);
- mes=message.success;
+ if(message.success)
+ {
+   mes=1;
+ }
 
 };
 
@@ -78,13 +80,14 @@ console.log("Received username:", username);
 
 
           console.log(mes);
-          if (mes==='true') {
+          if (mes===1) {
 
                 // Redirect to the user's dashboard
                 res.writeHead(302, {
                     Location: '/index.html',
                 });
                 res.end();
+            mes=0;
           }
           else
           {
