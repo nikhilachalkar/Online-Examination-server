@@ -14,7 +14,7 @@ ws.onmessage = (event) => {
     const message = JSON.parse(event.data);
   
     console.log("Received message:", message);
- mes=message;
+ mes=message.success;
   
   if (message.success) {
   
@@ -81,7 +81,7 @@ console.log("Received username:", username);
                 ws.send(JSON.stringify(loginData));
 
 
-          if (mes.success) {
+          if (mes) {
 
                 // Redirect to the user's dashboard
                 res.writeHead(302, {
