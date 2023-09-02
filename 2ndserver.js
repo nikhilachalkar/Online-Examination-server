@@ -15,10 +15,7 @@ ws.onmessage = (event) => {
     console.log("Received message:", message);
  if(message.success)
  {
-   res.writeHead(302, {
-                    Location: '/index.html',
-                });
-                res.end();
+  mes=1;
  }
 
 };
