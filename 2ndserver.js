@@ -50,7 +50,7 @@ const server = http.createServer((req, res) => {
         });
     } 
     
-         else if (req.url === '/login.html' && req.method === 'POST') {
+         else if (req.url === '/index.html' && req.method === 'GET') {
         // Handle login form submission
         // let body = '';
         // req.on('data', (chunk) => {
