@@ -108,11 +108,12 @@ ws.onmessage = (event) => {
     console.log("Received message:", message);
 
     if (message.success) {
-       
+    // Store the username in Local Storage
+    localStorage.setItem('username', message.username);
 
-        window.location.href='index.html';
-       
-    }
+    // Redirect to index.html
+    window.location.href = 'index.html';
+}
 };
 
             ws.onclose = () => {
