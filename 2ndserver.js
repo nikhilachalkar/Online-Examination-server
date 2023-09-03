@@ -3,14 +3,13 @@ const fs = require('fs');
 const PORT = process.env.PORT || 3000;
 const WebSocket = require('ws');
 
-let message;
 const ws = new WebSocket("wss://aiscribe.onrender.com");
 ws.onopen = () => {
                 console.log("WebSocket connection established");
             };
 
 ws.onmessage = (event) => {
-     message = JSON.parse(event.data);
+     const message = JSON.parse(event.data);
   
     console.log("Received message:", message);
   if (message.success) {
