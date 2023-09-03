@@ -41,7 +41,7 @@ const server = http.createServer((req, res) => {
             }
         });
     } 
-    else if (req.url==='/index.html')
+    else if (req.url==='/index.html'  && req.method === 'POST')
         {
              fs.readFile('index.html', 'utf8', (err, data) => {
             if (err) {
