@@ -67,7 +67,7 @@ console.log("Received username:", username);
                 // Send login request
                 ws.send(JSON.stringify(loginData)); 
 
-              sync if(mes===1)
+              if(mes===1)
               {
 
 
