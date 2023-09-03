@@ -10,14 +10,10 @@ ws.onopen = () => {
             };
 
 ws.onmessage = (event) => {
-    const message = JSON.parse(event.data);
+    let message = JSON.parse(event.data);
   
     console.log("Received message:", message);
- if(message.success)
- {
-  mes=1;
- }
-
+ 
 };
 
 ws.onclose = () => {
@@ -67,7 +63,7 @@ console.log("Received username:", username);
                 // Send login request
                 ws.send(JSON.stringify(loginData)); 
 
-              if(mes===1)
+              if(message.success)
               {
 
 
