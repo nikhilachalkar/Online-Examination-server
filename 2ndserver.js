@@ -41,18 +41,18 @@ const server = http.createServer((req, res) => {
             }
         });
     } 
-    // else if (req.url==='/index.html')
-    //     {
-    //          fs.readFile('index.html', 'utf8', (err, data) => {
-    //         if (err) {
-    //             res.writeHead(500, { 'Content-Type': 'text/plain' });
-    //             res.end('Internal Server Error');
-    //         } else {
-    //             res.writeHead(200, { 'Content-Type': 'text/html' });
-    //             res.end(data);
-    //         }
-    //     });
-    //     }
+    else if (req.url==='/index.html')
+        {
+             fs.readFile('index.html', 'utf8', (err, data) => {
+            if (err) {
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Internal Server Error');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        });
+        }
          else if (req.url === '/index.html' && req.method === 'POST') {
         // Handle login form submission
         let body = '';
