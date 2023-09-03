@@ -3,7 +3,7 @@ const fs = require('fs');
 const PORT = process.env.PORT || 3000;
 const WebSocket = require('ws');
 let mes=0;
-
+let message;
 function handleWebSocketMessage(message) {
     const parsedMessage = JSON.parse(message);
     console.log("Received message:", parsedMessage);
@@ -22,10 +22,9 @@ ws.onopen = () => {
             };
 
 ws.onmessage = (event) => {
-     const message = JSON.parse(event.data);
+     message = JSON.parse(event.data);
   
     console.log("Received message:", message);
-    sync handleWebSocketMessage(message);
   
 };
 
@@ -74,7 +73,8 @@ const server = http.createServer((req, res) => {
                 // Send login request
                 ws.send(JSON.stringify(loginData));    
 
-
+handleWebSocketMessage(message);
+  
 
             if(mes===1)
             {
