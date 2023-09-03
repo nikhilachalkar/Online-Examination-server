@@ -41,18 +41,7 @@ const server = http.createServer((req, res) => {
             }
         });
     } 
-    else if (req.url==='/index.html'  && req.method === 'POST')
-        {
-             fs.readFile('index.html', 'utf8', (err, data) => {
-            if (err) {
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end('Internal Server Error');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-        }
+    
          else if (req.url === '/index.html' && req.method === 'POST') {
         // Handle login form submission
         let body = '';
@@ -76,22 +65,27 @@ console.log("Received username:", username);
                     password: password,
                 };
                 // Send login request
-                ws.send(JSON.stringify(loginData));
+                ws.send(JSON.stringify(loginData)); 
+
+              sync if(mes===1)
+              {
 
 
-          
-            
+ fs.readFile('index.html', 'utf8', (err, data) => {
+            if (err) {
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Internal Server Error');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        });
+                
+              }
         }      
         );
     }
-           else if (req.url === '/login.html' && mes === 1) {
-        // Redirect to the user's dashboard if mes is 1
-        res.writeHead(302, {
-            Location: '/index.html',
-        });
-        res.end();
-        mes = 0;
-        }
+    
         else {
         // Handle other requests
         res.writeHead(404, { 'Content-Type': 'text/plain' });
