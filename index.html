@@ -80,6 +80,18 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+
+
+             const storedUsername = localStorage.getItem('username');
+
+    // Check if the username exists in Local Storage
+    if (storedUsername) {
+        // You can use the retrieved username as needed
+        console.log("Username:", storedUsername);
+    } else {
+        // Handle the case where the username is not found in Local Storage
+        console.log("Username not found in Local Storage");
+    }
             const form = document.getElementById("upload-form");
             const ws = new WebSocket("wss://aiscribe.onrender.com"); // Replace with your server's WebSocket URL
             
