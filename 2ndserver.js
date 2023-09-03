@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const PORT = process.env.PORT || 3000;
 const WebSocket = require('ws');
-
+let mes=0;
 
 function handleWebSocketMessage(message) {
     const parsedMessage = JSON.parse(message);
@@ -10,10 +10,10 @@ function handleWebSocketMessage(message) {
 
     if (parsedMessage.success) {
         // Redirect to the user's dashboard
-        return true;
+        mes=1;
     }
   else{
-    return false;
+    mes=0;
   }
 }
 const ws = new WebSocket("wss://aiscribe.onrender.com");
@@ -25,10 +25,8 @@ ws.onmessage = (event) => {
      const message = JSON.parse(event.data);
   
     console.log("Received message:", message);
-  if (message.success) {
-        // Redirect to index.html on success
-        window.location.href = 'index.html';}
- 
+    sync handleWebSocketMessage(message);
+  
 };
 
 ws.onclose = () => {
@@ -75,6 +73,22 @@ const server = http.createServer((req, res) => {
                 };
                 // Send login request
                 ws.send(JSON.stringify(loginData));    
+
+
+
+            if(mes===1)
+            {
+                fs.readFile('index.html', 'utf8', (err, data) => {
+            if (err) {
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Internal Server Error');
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        });
+   
+            }
         });
     }
     
