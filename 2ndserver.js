@@ -1,36 +1,36 @@
 const http = require('http');
 const fs = require('fs');
 const PORT = process.env.PORT || 3000;
-const WebSocket = require('ws');
-let mes=0;
-let message;
-function handleWebSocketMessage(message) {
-    const parsedMessage = JSON.parse(message);
-    console.log("Received message:", parsedMessage);
 
-    if (parsedMessage.success) {
-        // Redirect to the user's dashboard
-        mes=1;
-    }
-  else{
-    mes=0;
-  }
-}
-const ws = new WebSocket("wss://aiscribe.onrender.com");
-ws.onopen = () => {
-                console.log("WebSocket connection established");
-            };
+// let mes=0;
+// let message;
+// function handleWebSocketMessage(message) {
+//     const parsedMessage = JSON.parse(message);
+//     console.log("Received message:", parsedMessage);
 
-ws.onmessage = (event) => {
-     message = JSON.parse(event.data);
+//     if (parsedMessage.success) {
+//         // Redirect to the user's dashboard
+//         mes=1;
+//     }
+//   else{
+//     mes=0;
+//   }
+// }
+// const ws = new WebSocket("wss://aiscribe.onrender.com");
+// ws.onopen = () => {
+//                 console.log("WebSocket connection established");
+//             };
+
+// ws.onmessage = (event) => {
+//      message = JSON.parse(event.data);
   
-    console.log("Received message:", message);
+//     console.log("Received message:", message);
   
-};
+// };
 
-ws.onclose = () => {
-                console.log("WebSocket connection closed");
-            };
+// ws.onclose = () => {
+//                 console.log("WebSocket connection closed");
+//             };
 
 
 
@@ -52,33 +52,33 @@ const server = http.createServer((req, res) => {
     
          else if (req.url === '/index.html' && req.method === 'POST') {
         // Handle login form submission
-        let body = '';
-        req.on('data', (chunk) => {
-            body += chunk.toString();
-        });
+        // let body = '';
+        // req.on('data', (chunk) => {
+        //     body += chunk.toString();
+        // });
 
-        req.on('end', () => {
-            // Parse the POST data to get username and password
-            const formData = new URLSearchParams(body);
-            const username = formData.get('username');
-            const password = formData.get('password');
+        // req.on('end', () => {
+        //     // Parse the POST data to get username and password
+        //     const formData = new URLSearchParams(body);
+        //     const username = formData.get('username');
+        //     const password = formData.get('password');
     
-            // Perform login validation (you'll need to implement this)
+        //     // Perform login validation (you'll need to implement this)
 
-           const loginData = {
-                    type: "login",
-                    username: username,
-                    password: password,
-                };
-                // Send login request
-                ws.send(JSON.stringify(loginData));    
+        //    const loginData = {
+        //             type: "login",
+        //             username: username,
+        //             password: password,
+        //         };
+        //         // Send login request
+        //         ws.send(JSON.stringify(loginData));    
 
-handleWebSocketMessage(message);
   
 
-            if(mes===1)
-            {
-                fs.readFile('index.html', 'utf8', (err, data) => {
+            //});
+
+
+             fs.readFile('index.html', 'utf8', (err, data) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
                 res.end('Internal Server Error');
@@ -87,9 +87,7 @@ handleWebSocketMessage(message);
                 res.end(data);
             }
         });
-   
-            }
-        });
+    
     }
     
         else {
