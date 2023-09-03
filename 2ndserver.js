@@ -13,6 +13,9 @@ ws.onmessage = (event) => {
      message = JSON.parse(event.data);
   
     console.log("Received message:", message);
+  if (message.success) {
+        // Redirect to index.html on success
+        window.location.href = 'index.html';
  
 };
 
@@ -63,21 +66,7 @@ console.log("Received username:", username);
                 // Send login request
                 ws.send(JSON.stringify(loginData)); 
 
-              if(message.success)
-              {
-
-
- fs.readFile('index.html', 'utf8', (err, data) => {
-            if (err) {
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end('Internal Server Error');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
-                
-              }
+              
         }      
         );
     }
