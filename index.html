@@ -132,7 +132,7 @@
                 ws.send(JSON.stringify({
                     type: "upload",
                     filename: file.name,
-                   
+                    username:storedUsername,
                     content: fileContentBase64,
                     time:time
                 }));
