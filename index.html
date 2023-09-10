@@ -142,11 +142,12 @@ const paperCodeContainer = document.getElementById("paperCodeContainer");
                         const paperCodeElement = document.createElement("div");
                         paperCodeElement.className = "paper-code";
                         paperCodeElement.textContent = code;
-                        // Add a click event listener to navigate to the corresponding paper code URL
-                                paperCodeElement.addEventListener("click", () => {
-                                const code = code; // Replace with the actual paper code
-                                window.location.href = `/papercode/${code}`;
-                                    });
+                        // Assuming paperCodeElement.textContent contains the paper code
+paperCodeElement.addEventListener("click", () => {
+    const code = paperCodeElement.textContent; // Extract the paper code from the clicked element
+    window.location.href = `/papercode/${code}`;
+});
+
 
                         paperCodeContainer.appendChild(paperCodeElement);
                     });
