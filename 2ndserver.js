@@ -1,7 +1,6 @@
 const http = require('http');
 const fs = require('fs');
-const url = require('url');
-const querystring = require('querystring');
+
 const PORT = process.env.PORT || 3000;
 
 
@@ -124,11 +123,11 @@ const server = http.createServer((req, res) => {
  const documentList = document.getElementById('documentList');
              documentList.innerHTML = '';
             // Create list items for each document
-            message.document.forEach((document) => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${document.name} - ${document.user}`;
-                documentList.appendChild(listItem);
-            });
+            message.document.forEach((doc) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${doc.name} - ${doc.time}`;
+        documentList.appendChild(listItem);
+    });
                 
                   }
                   else
