@@ -59,7 +59,8 @@
 
 </head>
 <body>
-    <h1>Welcome <script>localStorage.getItem('username');</script></h1>
+    <h1 id="welcomeHeader">Welcome </h1>
+    
     <form id="upload-form">
         <label for="file">Choose a file (PDF or TXT):</label>
 <input type="file" id="file" name="file" accept=".pdf, .txt">
@@ -87,7 +88,9 @@
     // Check if the username exists in Local Storage
     if (storedUsername) {
         // You can use the retrieved username as needed
-        console.log("Username:", storedUsername);
+        var welcomeHeader = document.getElementById('welcomeHeader');
+        welcomeHeader.innerHTML +=storedUsername;
+        
     } else {
         // Handle the case where the username is not found in Local Storage
         console.log("Username not found in Local Storage");
