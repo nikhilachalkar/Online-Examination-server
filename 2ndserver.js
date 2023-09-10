@@ -89,6 +89,17 @@ const server = http.createServer((req, res) => {
         });
     
     }
+
+           else if (req.url.startsWith('/papercode/')) {
+        // Extract the paper code from the URL
+        const paperCode = req.url.split('/').pop();
+
+        // Dynamically generate HTML content based on the paper code
+        const dynamicHtml = `<html><head><title>Paper Code: ${paperCode}</title></head><body><h1>Paper Code: ${paperCode}</h1></body></html>`;
+
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(dynamicHtml);
+    } 
     
         else {
         // Handle other requests
