@@ -63,17 +63,43 @@ const server = http.createServer((req, res) => {
         <h1>Paper Code: ${paperCode}</h1>
         <p>This is the content for paper code ${paperCode}.</p>
         <button id="deleteButton">Delete Paper Code</button>
+
+        <div class="document-box">
+    <h2>Document Details</h2>
+    <p><strong>Name:</strong> <span id="documentName"></span></p>
+    <p><strong>Time:</strong> <span id="documentTime"></span></p>
+    <button id="download">Download</button>
+</div>
     </body>
     <script>
-        document.getElementById('deleteButton').addEventListener('click', () => {
-            const ws = new WebSocket("wss://aiscribe.onrender.com");
+
+    const ws = new WebSocket("wss://aiscribe.onrender.com");
             ws.onopen = () => {
                 console.log("WebSocket connection established");
+                 const Data2 = {
+                    type: "retrieveDocument",
+                    papercode:papercode
+                   
+                };
+                // Send login request
+                ws.send(JSON.stringify(Data2));
             };
 
               ws.onmessage = (event) => {
                  message = JSON.parse(event.data);
-  
+                 if(message.success||message.docu)
+                  {  window.location.href = 'index.html';}
+                  if(message.success && message.docu)
+                  {
+                   const documentName = document.getElementById('documentName');
+                const documentTime = document.getElementById('documentTime');
+               
+
+                documentName.textContent = message.document.name;
+                documentTime.textContent = message.document.user;
+
+                
+                  }
                   console.log("Received message:", message);
   
                 };
@@ -81,6 +107,10 @@ const server = http.createServer((req, res) => {
             ws.onclose = () => {
                 console.log("WebSocket connection closed");
             };
+
+            
+        document.getElementById('deleteButton').addEventListener('click', () => {
+            
 
         const Data = {
                     type: "delete",
