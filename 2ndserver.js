@@ -83,13 +83,20 @@ const server = http.createServer((req, res) => {
         <h1>Paper Code: ${paperCode}</h1>
         <p>This is the content for paper code ${paperCode}.</p>
         <button type="submit" id="deleteButton">Delete Paper Code</button>
+<div class="document-box">
+        <h2>Document List</h2>
+        <ul id="documentList"></ul>
+    </div>
 
-        <div class="document-box">
-    <h1>Document Details</h1>
-    <p><strong>Name:</strong> <span id="documentName"></span></p>
-    <p><strong>Time:</strong> <span id="documentTime"></span></p>
-    <button type="submit" id="download">Download</button>
-</div>
+    <!-- Add a link to return to the index page -->
+    <a href="/index.html">Back to Index</a>
+
+//         <div class="document-box">
+//     <h1>Document Details</h1>
+//     <p><strong>Code:</strong> <span id="documentName"></span></p>
+//     <p><strong>Name:</strong> <span id="documentTime"></span></p>
+//     <button type="submit" id="download">Download</button>
+// </div>
     </body>
     <script>
    
@@ -113,13 +120,15 @@ const server = http.createServer((req, res) => {
                  
                 if(message.success && message.docu)
                   {
-                   const documentName = document.getElementById('documentName');
-                const documentTime = document.getElementById('documentTime');
                
-
-                documentName.textContent = message.document.name;
-                documentTime.textContent = message.document.user;
-
+ const documentList = document.getElementById('documentList');
+            
+            // Create list items for each document
+            message.documentList.forEach((document) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${document.name} - ${document.user}`;
+                documentList.appendChild(listItem);
+            });
                 
                   }
                   else
