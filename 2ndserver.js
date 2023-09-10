@@ -36,7 +36,7 @@ const server = http.createServer((req, res) => {
            else if (req.url.startsWith('/papercode/')) {
         // Extract the paper code from the URL
                 
- const parsedUrl = url.parse(req.url, true);
+const parsedUrl = url.parse(req.url, true);
         const query = parsedUrl.query;
 
         if (query && query.username) {
