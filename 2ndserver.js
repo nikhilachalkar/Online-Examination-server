@@ -41,7 +41,7 @@ const parsedUrl = url.parse(req.url, true);
 
         if (query && query.username) {
             const paperCode = req.url.split('/').pop();
-            const username = query.username; // Extract the username from the query string
+           
 
         
         
@@ -100,7 +100,8 @@ const parsedUrl = url.parse(req.url, true);
 </div>
     </body>
     <script>
-    const username = "${username}";
+   
+     const username = localStorage.getItem('username');
  const paperCode = "${paperCode}"; // Define the papercode variable
 
     const ws = new WebSocket("wss://aiscribe.onrender.com");
