@@ -82,11 +82,10 @@ const server = http.createServer((req, res) => {
         <h1>Paper Code: ${paperCode}</h1>
         <p>This is the content for paper code ${paperCode}.</p>
         <button type="submit" id="deleteButton">Delete Paper Code</button>
-<div class="document-box">
-        <h2>Document List</h2>
-        <ul id="documentList"></ul>
-    </div>
 
+<div class="document-box" id="documentList">
+        <!-- papercode -->
+    </div>
     <!-- Add a link to return to the index page -->
     <a href="/index.html">Back to Index</a>
 
@@ -124,9 +123,10 @@ const server = http.createServer((req, res) => {
              documentList.innerHTML = '';
             // Create list items for each document
             message.document.forEach((doc) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = doc.name ;
-        listItem.textContent=doc.user;
+        const listItem = document.createElement('div');
+        listItem.textContent = doc ;
+        
+       
         documentList.appendChild(listItem);
     });
                 
