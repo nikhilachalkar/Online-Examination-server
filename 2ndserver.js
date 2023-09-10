@@ -89,12 +89,7 @@ const server = http.createServer((req, res) => {
     <!-- Add a link to return to the index page -->
     <a href="/index.html">Back to Index</a>
 
-//         <div class="document-box">
-//     <h1>Document Details</h1>
-//     <p><strong>Code:</strong> <span id="documentName"></span></p>
-//     <p><strong>Name:</strong> <span id="documentTime"></span></p>
-//     <button type="submit" id="download">Download</button>
-// </div>
+
     </body>
     <script>
    
