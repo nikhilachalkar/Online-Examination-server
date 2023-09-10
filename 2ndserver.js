@@ -39,7 +39,7 @@ const server = http.createServer((req, res) => {
               const query = url.parse(req.url, true).query;
         const username = query.username; // Access the 'username' query parameter
 
-               console.log(username);
+    
 
         // Dynamically generate HTML content based on the paper code
         const dynamicHtml = `
@@ -102,8 +102,8 @@ const server = http.createServer((req, res) => {
                 console.log("WebSocket connection established");
                  const Data2 = {
                     type: "retrieveDocument",
-                    papercode:paperCode,
-                    username:username
+                    papercode:paperCode
+                    
                 };
                 // Send login request
                 ws.send(JSON.stringify(Data2));
@@ -141,7 +141,8 @@ const server = http.createServer((req, res) => {
 
         const Data = {
                     type: "delete",
-                    papercode:paperCode
+                    papercode:paperCode,
+                    username:username
                    
                 };
                 // Send login request
