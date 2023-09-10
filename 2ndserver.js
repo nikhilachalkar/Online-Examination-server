@@ -125,7 +125,7 @@ const server = http.createServer((req, res) => {
             // Create list items for each document
             message.document.forEach((doc) => {
         const listItem = document.createElement('li');
-        listItem.textContent = '${doc.name} - ${doc.time}';
+        listItem.textContent = '${doc.name} - ${doc.user}';
         documentList.appendChild(listItem);
     });
                 
