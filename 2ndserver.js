@@ -41,16 +41,56 @@ const server = http.createServer((req, res) => {
     <head>
         <title>Paper Code: ${paperCode}</title>
     </head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #3d2ede;
+        }
+
+        h1 {
+            text-align: center;
+            color: aliceblue;
+            font-size:large;
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .document-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <body>
         <h1>Paper Code: ${paperCode}</h1>
         <p>This is the content for paper code ${paperCode}.</p>
-        <button id="deleteButton">Delete Paper Code</button>
+        <button type="submit" id="deleteButton">Delete Paper Code</button>
 
         <div class="document-box">
-    <h2>Document Details</h2>
+    <h1>Document Details</h1>
     <p><strong>Name:</strong> <span id="documentName"></span></p>
     <p><strong>Time:</strong> <span id="documentTime"></span></p>
-    <button id="download">Download</button>
+    <button type="submit" id="download">Download</button>
 </div>
     </body>
     <script>
