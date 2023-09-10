@@ -66,12 +66,6 @@ const server = http.createServer((req, res) => {
             font-weight: bold;
         }
 
-        .document-box {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
         button[type="submit"] {
             background-color: #007bff;
             color: white;
@@ -117,7 +111,7 @@ const server = http.createServer((req, res) => {
                  message = JSON.parse(event.data);
                  if(message.success||message.docu)
                   {  window.location.href = 'index.html';}
-                  if(message.success && message.docu)
+                  else if(message.success && message.docu)
                   {
                    const documentName = document.getElementById('documentName');
                 const documentTime = document.getElementById('documentTime');
@@ -127,6 +121,10 @@ const server = http.createServer((req, res) => {
                 documentTime.textContent = message.document.user;
 
                 
+                  }
+                  else
+                  {
+                  
                   }
                   console.log("Received message:", message);
   
