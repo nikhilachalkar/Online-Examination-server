@@ -16,21 +16,6 @@ const PORT = process.env.PORT || 3000;
 //     mes=0;
 //   }
 // }
-// const ws = new WebSocket("wss://aiscribe.onrender.com");
-// ws.onopen = () => {
-//                 console.log("WebSocket connection established");
-//             };
-
-// ws.onmessage = (event) => {
-//      message = JSON.parse(event.data);
-  
-//     console.log("Received message:", message);
-  
-// };
-
-// ws.onclose = () => {
-//                 console.log("WebSocket connection closed");
-//             };
 
 
 
@@ -81,8 +66,29 @@ const server = http.createServer((req, res) => {
     </body>
     <script>
         document.getElementById('deleteButton').addEventListener('click', () => {
-            // Use JavaScript to send a delete request to your server
-            // and remove the paper code from your database.
+            const ws = new WebSocket("wss://aiscribe.onrender.com");
+            ws.onopen = () => {
+                console.log("WebSocket connection established");
+            };
+
+              ws.onmessage = (event) => {
+                 message = JSON.parse(event.data);
+  
+                  console.log("Received message:", message);
+  
+                };
+
+            ws.onclose = () => {
+                console.log("WebSocket connection closed");
+            };
+
+        const Data = {
+                    type: "delete",
+                    papercode:papercode
+                   
+                };
+                // Send login request
+                ws.send(JSON.stringify(Data));
         });
     </script>
     </html>
