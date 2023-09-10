@@ -35,10 +35,10 @@ const server = http.createServer((req, res) => {
            else if (req.url.startsWith('/papercode/')) {
         // Extract the paper code from the URL
                 
-const paperCode = req.url.split('/')[2];
-              const query = url.parse(req.url, true).query;
-        const username = query.username; // Access the 'username' query parameter
 
+const parsedUrl = url.parse(req.url, true);
+        const paperCode = req.url.split('/')[2]; // Extract the paper code from the URL
+        const username = parsedUrl.query.username; 
     
 
         // Dynamically generate HTML content based on the paper code
