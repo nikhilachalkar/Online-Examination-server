@@ -33,7 +33,9 @@ const server = http.createServer((req, res) => {
 
            else if (req.url.startsWith('/papercode/')) {
         // Extract the paper code from the URL
-        const paperCode = req.url.split('/').pop();
+                const paperCode = req.url.split('/').pop();
+
+               const storedUsername = localStorage.getItem('username');
 
         // Dynamically generate HTML content based on the paper code
         const dynamicHtml = `
@@ -94,6 +96,7 @@ const server = http.createServer((req, res) => {
 </div>
     </body>
     <script>
+    const username = "${storedUsername}";
  const paperCode = "${paperCode}"; // Define the papercode variable
 
     const ws = new WebSocket("wss://aiscribe.onrender.com");
@@ -101,8 +104,8 @@ const server = http.createServer((req, res) => {
                 console.log("WebSocket connection established");
                  const Data2 = {
                     type: "retrieveDocument",
-                    papercode:paperCode
-                   
+                    papercode:paperCode,
+                    username:username
                 };
                 // Send login request
                 ws.send(JSON.stringify(Data2));
