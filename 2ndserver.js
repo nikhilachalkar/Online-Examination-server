@@ -35,7 +35,8 @@ const server = http.createServer((req, res) => {
         // Extract the paper code from the URL
                 const paperCode = req.url.split('/').pop();
 
-               const storedUsername = localStorage.getItem('username');
+              const query = url.parse(req.url, true).query;
+        const username = query.username; // Access the 'username' query parameter
 
         // Dynamically generate HTML content based on the paper code
         const dynamicHtml = `
@@ -96,7 +97,7 @@ const server = http.createServer((req, res) => {
 </div>
     </body>
     <script>
-    const username = "${storedUsername}";
+    const username = "${username}";
  const paperCode = "${paperCode}"; // Define the papercode variable
 
     const ws = new WebSocket("wss://aiscribe.onrender.com");
