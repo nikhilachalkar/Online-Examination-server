@@ -51,32 +51,6 @@ const server = http.createServer((req, res) => {
     } 
     
          else if (req.url === '/index.html') {
-        // Handle login form submission
-        // let body = '';
-        // req.on('data', (chunk) => {
-        //     body += chunk.toString();
-        // });
-
-        // req.on('end', () => {
-        //     // Parse the POST data to get username and password
-        //     const formData = new URLSearchParams(body);
-        //     const username = formData.get('username');
-        //     const password = formData.get('password');
-    
-        //     // Perform login validation (you'll need to implement this)
-
-        //    const loginData = {
-        //             type: "login",
-        //             username: username,
-        //             password: password,
-        //         };
-        //         // Send login request
-        //         ws.send(JSON.stringify(loginData));    
-
-  
-
-            //});
-
 
              fs.readFile('index.html', 'utf8', (err, data) => {
             if (err) {
@@ -95,7 +69,24 @@ const server = http.createServer((req, res) => {
         const paperCode = req.url.split('/').pop();
 
         // Dynamically generate HTML content based on the paper code
-        const dynamicHtml = `<html><head><title>Paper Code: ${paperCode}</title></head><body><h1>Paper Code: ${paperCode}</h1></body></html>`;
+        const dynamicHtml = `
+    <html>
+    <head>
+        <title>Paper Code: ${paperCode}</title>
+    </head>
+    <body>
+        <h1>Paper Code: ${paperCode}</h1>
+        <p>This is the content for paper code ${paperCode}.</p>
+        <button id="deleteButton">Delete Paper Code</button>
+    </body>
+    <script>
+        document.getElementById('deleteButton').addEventListener('click', () => {
+            // Use JavaScript to send a delete request to your server
+            // and remove the paper code from your database.
+        });
+    </script>
+    </html>
+`;
 
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(dynamicHtml);
