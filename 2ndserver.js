@@ -54,6 +54,7 @@ const server = http.createServer((req, res) => {
 </div>
     </body>
     <script>
+ const paperCode = "${paperCode}"; // Define the papercode variable
 
     const ws = new WebSocket("wss://aiscribe.onrender.com");
             ws.onopen = () => {
