@@ -145,7 +145,7 @@ const paperCodeContainer = document.getElementById("paperCodeContainer");
                         // Assuming paperCodeElement.textContent contains the paper code
 paperCodeElement.addEventListener("click", () => {
     const code = paperCodeElement.textContent; // Extract the paper code from the clicked element
-    window.location.href = `/papercode/${code}`;
+    window.location.href = `/papercode/${code}?username=${storedUsername}`;
 });
 
 
