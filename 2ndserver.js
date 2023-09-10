@@ -39,6 +39,8 @@ const server = http.createServer((req, res) => {
               const query = url.parse(req.url, true).query;
         const username = query.username; // Access the 'username' query parameter
 
+               console.log(username);
+
         // Dynamically generate HTML content based on the paper code
         const dynamicHtml = `
     <html>
@@ -109,9 +111,8 @@ const server = http.createServer((req, res) => {
 
               ws.onmessage = (event) => {
                  message = JSON.parse(event.data);
-                 if(message.success||message.docu)
-                  {  window.location.href = 'index.html';}
-                  else if(message.success && message.docu)
+                 
+                if(message.success && message.docu)
                   {
                    const documentName = document.getElementById('documentName');
                 const documentTime = document.getElementById('documentTime');
