@@ -2,24 +2,6 @@ const http = require('http');
 const fs = require('fs');
 const PORT = process.env.PORT || 3000;
 
-// let mes=0;
-// let message;
-// function handleWebSocketMessage(message) {
-//     const parsedMessage = JSON.parse(message);
-//     console.log("Received message:", parsedMessage);
-
-//     if (parsedMessage.success) {
-//         // Redirect to the user's dashboard
-//         mes=1;
-//     }
-//   else{
-//     mes=0;
-//   }
-// }
-
-
-
-
 
 const server = http.createServer((req, res) => {
     if (req.url === '/') {
@@ -78,7 +60,7 @@ const server = http.createServer((req, res) => {
                 console.log("WebSocket connection established");
                  const Data2 = {
                     type: "retrieveDocument",
-                    papercode:papercode
+                    papercode:paperCode
                    
                 };
                 // Send login request
@@ -114,7 +96,7 @@ const server = http.createServer((req, res) => {
 
         const Data = {
                     type: "delete",
-                    papercode:papercode
+                    papercode:paperCode
                    
                 };
                 // Send login request
