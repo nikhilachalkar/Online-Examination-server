@@ -35,10 +35,15 @@ const server = http.createServer((req, res) => {
            else if (req.url.startsWith('/papercode/')) {
         // Extract the paper code from the URL
                 
+ const parsedUrl = url.parse(req.url, true);
+        const query = parsedUrl.query;
 
-const parsedUrl = url.parse(req.url, true);
-        const paperCode = req.url.split('/')[2]; // Extract the paper code from the URL
-        const username = parsedUrl.query.username; 
+        if (query && query.username) {
+            const paperCode = req.url.split('/').pop();
+            const username = query.username; // Extract the username from the query string
+
+        
+        
     
 
         // Dynamically generate HTML content based on the paper code
@@ -155,7 +160,7 @@ const parsedUrl = url.parse(req.url, true);
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(dynamicHtml);
     } 
-    
+           }
         else {
         // Handle other requests
         res.writeHead(404, { 'Content-Type': 'text/plain' });
