@@ -34,6 +34,21 @@
             font-weight: bold;
         }
 
+        .paper-code-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .paper-code {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
         input[type="file"] {
             display: block;
             width: 100%;
@@ -73,11 +88,17 @@
         pattern="[0-9]*[.,]?[0-9]*" required>
 
         
-  <label for="username">UniqueCode:</label>
-        <input type="text" id="username" name="username" >
+  <label for="uniquecode">UniqueCode:</label>
+        <input type="text" id="uniquecode" name="uniquecode" >
 
         <button type="submit">Upload</button>
     </form>
+
+    <h1>Paper Codes</h1>
+    
+    <div class="paper-code-container" id="paperCodeContainer">
+        <!-- papercode -->
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -102,15 +123,36 @@
 
             ws.onopen = () => {
                 console.log("WebSocket connection established");
+
+                 ws.send(JSON.stringify({ type: "retrieveUserPaperCodes", username: storedUsername }));
+           
             };
 
             ws.onmessage = (event) => {
                 const message = JSON.parse(event.data);
                 console.log("Received message:", message);
-                const uniqueCodeInput = document.getElementById("username");
-                    if (uniqueCodeInput) {
-                            uniqueCodeInput.value = message.unique; 
-                    }
+                const uniqueCodeInput = document.getElementById("uniquecode");
+                 if (message.success && message.papercode) {
+                    // Clear any existing paper codes
+                    paperCodeContainer.innerHTML = "";
+
+                    // Iterate through the paper codes and display them
+                    message.papercode.forEach((code) => {
+                        const paperCodeElement = document.createElement("div");
+                        paperCodeElement.className = "paper-code";
+                        paperCodeElement.textContent = code;
+                        paperCodeContainer.appendChild(paperCodeElement);
+                    });
+                }
+                 else if(message.success)
+                 {
+                      uniqueCodeInput.value = message.unique; 
+                 }
+                 else {
+                    console.error("Failed to retrieve paper codes:", message.message);
+                }
+
+                
             };
 
             ws.onclose = () => {
