@@ -51,7 +51,14 @@ const server = http.createServer((req, res) => {
             padding: 0;
             background-color: #3d2ede;
         }
-
+            #box {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #e6e7ee;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
         h1 {
             text-align: center;
             color: aliceblue;
@@ -173,12 +180,12 @@ const documentList = document.getElementById('documentList');
             documentList.innerHTML = '';
 
          // Iterate through the retrieved documents and create list items
-message.document.forEach((document) => {
+message.document.forEach((docu) => {
     const listItem = document.createElement('li');
 
     // Split the document name and user
-    const nameParts = document.name.split(' ');
-    const userNameParts = document.user.split(' ');
+    const nameParts = docu.name.split(' ');
+    const userNameParts = docu.user.split(' ');
 
     // Create separate elements for name and user
     const nameElement = document.createElement('strong');
@@ -186,7 +193,7 @@ message.document.forEach((document) => {
     nameElement.textContent = "Name: " + nameParts.join(' ');
 
     const userElement = document.createElement('span');
-    userElement.textContent = "User: " + nameParts.join(' ');
+    userElement.textContent = "User: " + userNameParts.join(' ');
 
     // Add the elements to the list item
     listItem.appendChild(nameElement);
