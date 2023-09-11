@@ -51,14 +51,6 @@ const server = http.createServer((req, res) => {
             padding: 0;
             background-color: #3d2ede;
         }
-            #box {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #e6e7ee;
-            border-radius: 5px;
-            padding: 20px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
         h1 {
             text-align: center;
             color: aliceblue;
@@ -142,7 +134,7 @@ const server = http.createServer((req, res) => {
         <h1>Paper Code: ${paperCode}</h1>
         <p>This is the content for paper code ${paperCode}.</p>
         <button type="submit" id="deleteButton">Delete Paper Code</button>
-<ul id="documentList"></ul>
+<ul id="documentList" ></ul>
 
 
     <!-- Add a link to return to the index page -->
@@ -183,6 +175,10 @@ const documentList = document.getElementById('documentList');
 message.document.forEach((docu) => {
     const listItem = document.createElement('li');
 
+    const downloadButton = document.createElement('button');
+    downloadButton.textContent = 'Download';
+
+    
     // Split the document name and user
     const nameParts = docu.name.split(' ');
     const userNameParts = docu.user.split(' ');
@@ -199,6 +195,24 @@ message.document.forEach((docu) => {
     listItem.appendChild(nameElement);
     listItem.appendChild(userElement);
 
+    downloadButton.addEventListener('click', () => {
+        // Retrieve the document's data (e.g., content or file URL)
+        const documentData = document.pdfData; // Replace with the actual field name
+
+        // Create a temporary anchor element for downloading
+        const downloadLink = document.createElement('a');
+        downloadLink.href = documentData; // Set the data source (e.g., a file URL)
+        downloadLink.download = document.name; // Set the desired file name
+
+        // Trigger a click event on the download link to initiate the download
+        downloadLink.click();
+
+        // Remove the temporary download link from the DOM
+        downloadLink.remove();
+    });
+
+    // Append the download button to the list item
+    listItem.appendChild(downloadButton);
     // Append the list item to the document list
     documentList.appendChild(listItem);
 });
