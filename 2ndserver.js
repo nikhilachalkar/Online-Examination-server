@@ -182,10 +182,11 @@ message.document.forEach((document) => {
 
     // Create separate elements for name and user
     const nameElement = document.createElement('strong');
-    nameElement.textContent = `Name: ${nameParts.join(' ')}`;
+   
+    nameElement.textContent = "Name: " + nameParts.join(' ');
 
     const userElement = document.createElement('span');
-    userElement.textContent = `User: ${userNameParts.join(' ')}`;
+    userElement.textContent = "User: " + nameParts.join(' ');
 
     // Add the elements to the list item
     listItem.appendChild(nameElement);
