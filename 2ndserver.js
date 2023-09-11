@@ -197,12 +197,12 @@ message.document.forEach((docu) => {
 
     downloadButton.addEventListener('click', () => {
         // Retrieve the document's data (e.g., content or file URL)
-        const documentData = document.pdfData; // Replace with the actual field name
+        const documentData = docu.pdfData; // Replace with the actual field name
 
         // Create a temporary anchor element for downloading
         const downloadLink = document.createElement('a');
         downloadLink.href = documentData; // Set the data source (e.g., a file URL)
-        downloadLink.download = document.name; // Set the desired file name
+        downloadLink.download = docu.user; // Set the desired file name
 
         // Trigger a click event on the download link to initiate the download
         downloadLink.click();
