@@ -113,6 +113,7 @@ const server = http.createServer((req, res) => {
                  
                 if(message.success && message.docu)
                   {
+                  console.log("Received message:", message);
                
  const documentList = document.getElementById('documentList');
              documentList.innerHTML = '';
@@ -128,9 +129,9 @@ const server = http.createServer((req, res) => {
                   }
                   else
                   {
-                  
-                  }
                   console.log("Received message:", message);
+                  }
+                  
   
                 };
 
