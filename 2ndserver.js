@@ -77,15 +77,67 @@ const server = http.createServer((req, res) => {
         button[type="submit"]:hover {
             background-color: #0056b3;
         }
+        /* Style the document list container */
+#documentList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style each document list item */
+#documentList li {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Hover effect for document list items */
+#documentList li:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Style the document name and user */
+#documentList li strong {
+  font-weight: bold;
+}
+
+/* Add spacing between document name and user */
+#documentList li span {
+  margin-left: 10px;
+}
+
+/* Add a button or link for downloading documents if needed */
+#documentList li a {
+  text-decoration: none;
+  color: #0078d4;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* Style for success message */
+#successMessage {
+  color: green;
+  margin-top: 10px;
+}
+
+/* Style for error message */
+#errorMessage {
+  color: red;
+  margin-top: 10px;
+}
+
     </style>
     <body>
         <h1>Paper Code: ${paperCode}</h1>
         <p>This is the content for paper code ${paperCode}.</p>
         <button type="submit" id="deleteButton">Delete Paper Code</button>
+<ul id="documentList"></ul>
 
-<div class="document-box" id="documentList">
-        <!-- papercode -->
-    </div>
+
     <!-- Add a link to return to the index page -->
     <a href="/index.html">Back to Index</a>
 
@@ -115,17 +167,34 @@ const server = http.createServer((req, res) => {
                   {
                   console.log("Received message:", message);
                
- const documentList = document.getElementById('documentList');
-             documentList.innerHTML = '';
-            // Create list items for each document
-            message.document.forEach((doc) => {
-        const listItem = document.createElement('div');
-        listItem.textContent = doc.name ;
-        listItem.textContent = doc.user ;
-       
-        documentList.appendChild(listItem);
-    });
-                
+const documentList = document.getElementById('documentList');
+
+            // Clear any existing content in the list
+            documentList.innerHTML = '';
+
+         // Iterate through the retrieved documents and create list items
+message.document.forEach((document) => {
+    const listItem = document.createElement('li');
+
+    // Split the document name and user
+    const nameParts = document.name.split(' ');
+    const userNameParts = document.user.split(' ');
+
+    // Create separate elements for name and user
+    const nameElement = document.createElement('strong');
+    nameElement.textContent = `Name: ${nameParts.join(' ')}`;
+
+    const userElement = document.createElement('span');
+    userElement.textContent = `User: ${userNameParts.join(' ')}`;
+
+    // Add the elements to the list item
+    listItem.appendChild(nameElement);
+    listItem.appendChild(userElement);
+
+    // Append the list item to the document list
+    documentList.appendChild(listItem);
+});
+
                   }
                   else
                   {
