@@ -208,7 +208,7 @@ downloadButton.addEventListener('click', () => {
     const a = document.createElement('a');
     a.style.display = 'none';
     a.href = url;
-    a.download = message.document.name; // Set the desired file name
+    a.download = docu.name; // Set the desired file name
     document.body.appendChild(a);
     a.click();
 
