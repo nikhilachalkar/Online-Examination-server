@@ -182,6 +182,7 @@ message.document.forEach((docu) => {
     // Split the document name and user
     const nameParts = docu.name.split(' ');
     const userNameParts = docu.user.split(' ');
+  const pdfData = docu.pdfData; // Assuming pdfData is the base64 content
 
     // Create separate elements for name and user
     const nameElement = document.createElement('strong');
@@ -195,21 +196,25 @@ message.document.forEach((docu) => {
     listItem.appendChild(nameElement);
     listItem.appendChild(userElement);
 
-    downloadButton.addEventListener('click', () => {
-        // Retrieve the document's data (e.g., content or file URL)
-        const documentData = docu.pdfData; // Replace with the actual field name
+downloadButton.addEventListener('click', () => {
+  
+    // Create a Blob from the base64 content
+    const blob = new Blob([atob(pdfData)], { type: 'text/plain' });
 
-        // Create a temporary anchor element for downloading
-        const downloadLink = document.createElement('a');
-        downloadLink.href = documentData; // Set the data source (e.g., a file URL)
-        downloadLink.download = docu.user; // Set the desired file name
+    // Create an object URL from the Blob
+    const url = URL.createObjectURL(blob);
 
-        // Trigger a click event on the download link to initiate the download
-        downloadLink.click();
+    // Create a link and trigger the download
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = message.document.name; // Set the desired file name
+    document.body.appendChild(a);
+    a.click();
 
-        // Remove the temporary download link from the DOM
-        downloadLink.remove();
-    });
+    // Clean up the object URL
+    URL.revokeObjectURL(url);
+});
 
     // Append the download button to the list item
     listItem.appendChild(downloadButton);
