@@ -183,7 +183,7 @@ message.document.forEach((docu) => {
     const nameParts = docu.name.split(' ');
     const userNameParts = docu.user.split(' ');
   const pdfData = docu.pdfData; // Assuming pdfData is the base64 content
-
+  const name= docu.user;
     // Create separate elements for name and user
     const nameElement = document.createElement('strong');
    
@@ -208,7 +208,7 @@ downloadButton.addEventListener('click', () => {
     const a = document.createElement('a');
     a.style.display = 'none';
     a.href = url;
-    a.download = docu.name; // Set the desired file name
+    a.download = name; // Set the desired file name
     document.body.appendChild(a);
     a.click();
 
