@@ -87,12 +87,12 @@
         id="test-time" name="test-time" 
         pattern="[0-9]*[.,]?[0-9]*" required>
 
-        <label for="language">test-time:</label>
+        <label for="language">language:</label>
          <input type="text" 
         id="language" name="language" 
         required>
 
-         <label for="type-of-file">test-time:</label>
+         <label for="type-of-file">type-of-file:</label>
          <input type="text"  
         id="type-of-file" name="type-of-file" 
          required>
@@ -181,6 +181,8 @@ paperCodeElement.addEventListener("click", () => {
                 e.preventDefault();
 
                  const time=(document.getElementById('test-time')).value;
+                const language=(document.getElementById('language')).value;
+                const filetype=(document.getElementById('type-of-file')).value;
 
  const fileInput = document.getElementById("file");
     const file = fileInput.files[0];
@@ -197,7 +199,9 @@ paperCodeElement.addEventListener("click", () => {
                     filename: file.name,
                     username:storedUsername,
                     content: fileContentBase64,
-                    time:time
+                    time:time.
+                    language:language,
+                    filetype:filetype
                     
                 }));
 
