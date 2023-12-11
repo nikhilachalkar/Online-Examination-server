@@ -87,6 +87,14 @@
         id="test-time" name="test-time" 
         pattern="[0-9]*[.,]?[0-9]*" required>
 
+         <input type="text" 
+        id="language" name="language" 
+        required>
+
+         <input type="text"  
+        id="type-of-file" name="type-of-file" 
+         required>
+
         
   <label for="uniquecode">UniqueCode:</label>
         <input type="text" id="uniquecode" name="uniquecode" >
@@ -188,6 +196,7 @@ paperCodeElement.addEventListener("click", () => {
                     username:storedUsername,
                     content: fileContentBase64,
                     time:time
+                    
                 }));
 
                 console.log("File upload initiated");
