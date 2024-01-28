@@ -16,7 +16,14 @@ const server = http.createServer((req, res) => {
                 res.end(data);
             }
         });
-    } 
+    }
+        else if(req.url.match("\.css$")){
+        var cssPath = path.join(__dirname, 'public', req.url);
+        var fileStream = fs.createReadStream(cssPath, "UTF-8");
+        res.writeHead(200, {"Content-Type": "text/css"});
+        fileStream.pipe(res);
+
+    }
     
          else if (req.url === '/index.html') {
 
