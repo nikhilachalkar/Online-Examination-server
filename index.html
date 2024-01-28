@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload</title>
-    <style>
+     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #3d2ede;
+            background-color: #5e99f2;
         }
 
         h1 {
@@ -20,8 +20,9 @@
         }
 
         #upload-form {
-            max-width: 400px;
-            margin: 0 auto;
+             margin-left: 100px;
+            width: 300px;
+            height: 300px;
             background-color: #e6e7ee;
             border-radius: 5px;
             padding: 20px;
@@ -75,8 +76,16 @@
 </head>
 <body>
     <h1 id="welcomeHeader">Welcome </h1>
+    <div style="display: flex;
+	align-items: flex-start;
+	margin-top: 30px;">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <dotlottie-player src="https://lottie.host/0cd055c2-b67d-4967-a394-f49266bb7020/qWzMi0TAAq.json" background="transparent" speed="1" style="width: 500px; height: 400px;" loop autoplay></dotlottie-player>
     
+   
     <form id="upload-form">
+        
         <label for="file">Choose a file (PDF or TXT):</label>
 <input type="file" id="file" name="file" accept=".pdf, .txt">
 
@@ -103,7 +112,7 @@
 
         <button type="submit">Upload</button>
     </form>
-
+    </div>
     <h1>Paper Codes</h1>
     
     <div class="paper-code-container" id="paperCodeContainer">
