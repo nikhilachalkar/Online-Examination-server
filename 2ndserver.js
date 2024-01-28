@@ -16,8 +16,8 @@ const server = http.createServer((req, res) => {
                 res.end(data);
             }
         });
-    } 
-    
+    }
+       
          else if (req.url === '/index.html') {
 
              fs.readFile('index.html', 'utf8', (err, data) => {
