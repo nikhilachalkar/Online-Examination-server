@@ -49,7 +49,7 @@ const server = http.createServer((req, res) => {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #3d2ede;
+            background-color: #5e99f2;
         }
         h1 {
             text-align: center;
