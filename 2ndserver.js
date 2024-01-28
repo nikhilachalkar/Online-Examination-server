@@ -16,15 +16,7 @@ const server = http.createServer((req, res) => {
                 res.end(data);
             }
         });
-        fs.readFile('styles.css','utf8',(err,data)=> {
-            if (err) {
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end('Internal Server Error');
-            } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(data);
-            }
-        });
+       
     }
        
          else if (req.url === '/index.html') {
