@@ -77,46 +77,61 @@ const server = http.createServer((req, res) => {
             background-color: #0056b3;
         }
         /* Style the document list container */
-#documentList {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Style each document list item */
-#documentList li {
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  margin: 5px 0;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-/* Hover effect for document list items */
-#documentList li:hover {
-  background-color: #e0e0e0;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-/* Style the document name and user */
-#documentList li strong {
-  font-weight: bold;
-}
-
-/* Add spacing between document name and user */
-#documentList li span {
-  margin-left: 10px;
-}
-
-/* Add a button or link for downloading documents if needed */
-#documentList li a {
-  text-decoration: none;
-  color: #0078d4;
-  font-weight: bold;
-  margin-left: 10px;
-}
-
+        /* Style the document list container */
+        #documentList {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0; /* Add margin for better spacing */
+        }
+        
+        /* Style each document list item */
+        #documentList li {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        /* Hover effect for document list items */
+        #documentList li:hover {
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+        
+        /* Style the document name and user */
+        #documentList li strong {
+            font-weight: bold;
+            font-size: 1.2em; /* Increase font size for document name */
+            color: #333333;
+        }
+        
+        /* Add spacing between document name and user */
+        #documentList li span {
+            display: block;
+            margin-top: 5px;
+            color: #666666;
+        }
+        
+        /* Add a button or link for downloading documents if needed */
+        #documentList li button {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        #documentList li button:hover {
+            background-color: #0056b3;
+        }
+        
+      
+        
 /* Style for success message */
 #successMessage {
   color: green;
