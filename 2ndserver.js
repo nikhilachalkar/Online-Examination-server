@@ -138,13 +138,17 @@ const server = http.createServer((req, res) => {
             <h1>Paper Code: ${paperCode}</h1>
             <p>This is the content for paper code ${paperCode}.</p>
             <button type="submit" id="deleteButton" href="/index.html">Delete Paper Code</button>
-    <ul id="documentList" ></ul>
     
-    
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+            <div style="display: flex;
+            align-items: flex-start;">
+            <ul id="documentList" ></ul>
+            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
-    <dotlottie-player src="https://lottie.host/9801f749-a481-4c08-acfa-5a36391f1d9d/NgW04hUFra.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
-        </body>
+    <dotlottie-player src="https://lottie.host/9801f749-a481-4c08-acfa-5a36391f1d9d/NgW04hUFra.json" background="transparent" speed="1" style="width: 500px; height: 500px;" loop autoplay></dotlottie-player>
+
+            </div>
+    
+            </body>
         <script>
        
          const username = localStorage.getItem('username');
