@@ -90,7 +90,7 @@ const server = http.createServer((req, res) => {
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   margin: 5px 0;
-  width :50%;
+  width: 600px;
   height: 40px;
   padding: 0;
   border-radius: 5px;
