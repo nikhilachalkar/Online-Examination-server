@@ -81,7 +81,7 @@ const server = http.createServer((req, res) => {
 #documentList {
   list-style-type: none;
   max-width: 900px;padding:0;
-  max-height:300px;
+  max-height:600px;
   margin: 0;
 }
 
@@ -137,7 +137,7 @@ const server = http.createServer((req, res) => {
         <body>
             <h1>Paper Code: ${paperCode}</h1>
             <p>This is the content for paper code ${paperCode}.</p>
-            <button type="submit" id="deleteButton" href="/index.html">Delete Paper Code</button>
+            <button type="submit" id="deleteButton" href="https://aiscribeupload.onrender.com/index.html">Delete Paper Code</button>
     
             <div style="display: flex;
             align-items: flex-start;">
