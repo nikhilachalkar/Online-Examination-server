@@ -80,7 +80,8 @@ const server = http.createServer((req, res) => {
         /* Style the document list container */
 #documentList {
   list-style-type: none;
-  max-width: 600px;padding:0;
+  max-width: 900px;padding:0;
+  max-height:300px;
   margin: 0;
 }
 
@@ -140,7 +141,9 @@ const server = http.createServer((req, res) => {
     <ul id="documentList" ></ul>
     
     
-        
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <dotlottie-player src="https://lottie.host/9801f749-a481-4c08-acfa-5a36391f1d9d/NgW04hUFra.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
         </body>
         <script>
        

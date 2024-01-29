@@ -14,13 +14,14 @@
 
         h1 {
             text-align: center;
-            color: aliceblue;
+            color: rgb(12, 14, 16);
             font-size:large;
             margin: 20px 0;
         }
 
         #upload-form {
-             margin-left: 100px;
+             
+             margin:auto ;
             width: 300px;
             height: 300px;
             background-color: #e6e7ee;
@@ -75,16 +76,22 @@
 
 </head>
 <body>
-    <h1 id="welcomeHeader">Welcome </h1>
-    <div style="display: flex;
-	align-items: flex-start;
-	margin-top: 30px ;max-width:100%;height:auto;"">
+    
+    <div style="position: relative;">
+        
+        <div style="position: absolute;
+        z-index: -1;
+        
+      ">
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
-    <dotlottie-player src="https://lottie.host/0cd055c2-b67d-4967-a394-f49266bb7020/qWzMi0TAAq.json" background="transparent" speed="1" style="width: 500px; height: 400px;" loop autoplay></dotlottie-player>
-    
-   
-    <form id="upload-form">
+        <dotlottie-player src="https://lottie.host/b5784fd3-9755-4ceb-9550-a12e7d09c48b/pHLp8PpYw6.json" background="transparent" speed="1" style="width:100%;; height: 50%;" loop autoplay></dotlottie-player>
+</div>
+   <div style="position: relative;
+   z-index: 1;
+ ">
+    <h1 id="welcomeHeader">Welcome </h1>
+    <form id="upload-form" >
         
         <label for="file">Choose a file (PDF or TXT):</label>
 <input type="file" id="file" name="file" accept=".pdf, .txt">
@@ -112,7 +119,10 @@
 
         <button type="submit">Upload</button>
     </form>
+</div>
+
     </div>
+
     <h1>Paper Codes</h1>
     
     <div class="paper-code-container" id="paperCodeContainer">
