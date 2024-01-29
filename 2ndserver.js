@@ -81,7 +81,7 @@ const server = http.createServer((req, res) => {
 #documentList {
   list-style-type: none;
   max-width: 900px;padding:0;
-  max-height:600px;
+  
   margin: 0;
 }
 
@@ -90,6 +90,7 @@ const server = http.createServer((req, res) => {
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   margin: 5px 0;
+  height: 300px;
   padding: 0;
   border-radius: 5px;
 }
@@ -140,7 +141,7 @@ const server = http.createServer((req, res) => {
             <button type="submit" id="deleteButton" href="https://aiscribeupload.onrender.com/index.html">Delete Paper Code</button>
     
             <div style="display: flex;
-            align-items: flex-start;">
+           ">
             <ul id="documentList" ></ul>
             <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
