@@ -90,6 +90,7 @@ const server = http.createServer((req, res) => {
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   margin: 5px 0;
+  width :50%;
   height: 40px;
   padding: 0;
   border-radius: 5px;
@@ -195,7 +196,7 @@ const server = http.createServer((req, res) => {
         // Create separate elements for name and user
         const nameElement = document.createElement('strong');
        
-        nameElement.textContent = "Name: " + nameParts.join(' ');
+        nameElement.textContent = "Name of Paper : " + nameParts.join(' ');
     
         const userElement = document.createElement('span');
         userElement.textContent = "User: " + userNameParts.join(' ');
