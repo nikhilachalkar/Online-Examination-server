@@ -45,102 +45,102 @@ const server = http.createServer((req, res) => {
             <title>Paper Code: ${paperCode}</title>
         </head>
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #5e99f2;
-            }
-            h1 {
-                text-align: center;
-                color: aliceblue;
-                font-size:large;
-                margin: 20px 0;
-            }
+            
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #5e99f2;
+        }
+        h1 {
+            text-align: center;
+            color: aliceblue;
+            font-size:large;
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        /* Style the document list container */
+#documentList {
+  list-style-type: none;
+  max-width: 600px;padding:0;
+  margin: 0;
+}
+
+/* Style each document list item */
+#documentList li {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+  padding: 0;
+  border-radius: 5px;
+}
+
+/* Hover effect for document list items */
+#documentList li:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Style the document name and user */
+#documentList li strong {
+  font-weight: bold;
+}
+
+/* Add spacing between document name and user */
+#documentList li span {
+  margin-left: 10px;
+}
+
+/* Add a button or link for downloading documents if needed */
+#documentList li a {
+  text-decoration: none;
+  color: #0078d4;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* Style for success message */
+#successMessage {
+  color: green;
+  margin-top: 10px;
+}
+
+/* Style for error message */
+#errorMessage {
+  color: red;
+  margin-top: 10px;
+}
+
     
-            label {
-                display: block;
-                margin-bottom: 10px;
-                font-weight: bold;
-            }
-    
-            button[type="submit"] {
-                background-color: #007bff;
-                color: white;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 3px;
-                cursor: pointer;
-            }
-    
-            button[type="submit"]:hover {
-                background-color: #0056b3;
-            }
-            /* Style the document list container */
-    #documentList {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    /* Style each document list item */
-    #documentList li {
-      background-color: #f5f5f5;
-      border: 1px solid #ccc;
-      margin: 5px 0;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    
-    /* Hover effect for document list items */
-    #documentList li:hover {
-      background-color: #e0e0e0;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
-    }
-    
-    /* Style the document name and user */
-    #documentList li strong {
-      font-weight: bold;
-    }
-    
-    /* Add spacing between document name and user */
-    #documentList li span {
-      margin-left: 10px;
-    }
-    
-    /* Add a button or link for downloading documents if needed */
-    #documentList li a {
-      text-decoration: none;
-      color: #0078d4;
-      font-weight: bold;
-      margin-left: 10px;
-    }
-    
-    /* Style for success message */
-    #successMessage {
-      color: green;
-      margin-top: 10px;
-    }
-    
-    /* Style for error message */
-    #errorMessage {
-      color: red;
-      margin-top: 10px;
-    }
     
         </style>
         <body>
             <h1>Paper Code: ${paperCode}</h1>
             <p>This is the content for paper code ${paperCode}.</p>
-            <button type="submit" id="deleteButton">Delete Paper Code</button>
+            <button type="submit" id="deleteButton" href="/index.html">Delete Paper Code</button>
     <ul id="documentList" ></ul>
     
     
-        <!-- Add a link to return to the index page -->
-        <a href="/index.html">Back to Index</a>
-    
-    
+        
         </body>
         <script>
        
