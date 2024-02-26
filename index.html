@@ -101,7 +101,11 @@
         
         <label for="file">Choose a file (PDF or TXT):</label>
 <input type="file" id="file" name="file" accept=".pdf, .txt">
+        
+        <label for="files">Choose image files :</label>
+<input type="file" id="images" name="files" accept=".jpg, .jpeg ,.png" multiple>
 
+        
 <label for="test-time">test-time:</label>
         
 
@@ -210,6 +214,25 @@ paperCodeElement.addEventListener("click", () => {
                  const time=(document.getElementById('test-time')).value;
                 const language=(document.getElementById('language')).value;
                 const filetype=(document.getElementById('type-of-file')).value;
+                 const images = document.getElementById('images');
+                const selectedFiles = images.files;
+                const filesData = [];
+
+    for (const file of selectedFiles) {
+        const reader = new FileReader();
+
+        reader.onload = (event) => {
+            const fileContentBase64 = event.target.result.split(",")[1];
+
+            filesData.push({
+                filename: file.name,
+                content: fileContentBase64,
+            });
+     };
+
+        reader.readAsDataURL(file);
+    }
+    
 
  const fileInput = document.getElementById("file");
     const file = fileInput.files[0];
@@ -226,6 +249,7 @@ paperCodeElement.addEventListener("click", () => {
                     filename: file.name,
                     username:storedUsername,
                     content: fileContentBase64,
+                    files: filesData,
                     time:time,
                     language:language,
                     filetype:filetype
@@ -242,6 +266,10 @@ paperCodeElement.addEventListener("click", () => {
     }
             });
         });
+
+       
+
+
     </script>
 </body>
 </html>
